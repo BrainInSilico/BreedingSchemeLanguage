@@ -2,7 +2,7 @@
 installBSL <- function() {
   load.fun("devtools")
   library(devtools)
-  devtools::install_github("jeanlucj/BreedingSchemeLanguage")  
+  devtools::install_github("BrainInSilico/BreedingSchemeLanguage/")  
 }
 
 # install a package

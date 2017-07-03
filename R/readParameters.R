@@ -9,7 +9,14 @@
 # row 7 cross cost
 # row 8 phenotyping cost
 # row 9 genotyping cost
-# row 10 QTLs effects
+# row 10 set QTL effects (y/n)
+# row 11 QTLs effects
+# row 12 number of RGA generation
+# row 13 RGA cost per generation
+# row 14 LST cost (total)
+# row 15 OYT cost
+# row 16 PYT cost
+# row 17 AYT cost
 
 readParameters <- function(paramFile) {
   data <- read.table(paramFile, sep = ":", stringsAsFactors = F)
@@ -23,9 +30,16 @@ readParameters <- function(paramFile) {
   phenoCost <- c(Standard=as.numeric(data[8,2]))
   genoCost <- as.numeric(data[9,2])
   nQTL <- ceiling(ratioQTL*nMarkers)
-  args <- list(nSim, initPop, nMarkers, nQTL, parentSelected, progenySize, crossCost, phenoCost, genoCost)
+  rgaGeneration <- as.numeric(data[12,2])
+  rgaCost <- as.numeric(data[13,2])
+  lstCost <- as.numeric(data[14,2])
+  oytCost <- as.numeric(data[15,2])
+  pytCost <- as.numeric(data[16,2])
+  aytCost <- as.numeric(data[17,2])
+  args <- list(nSim, initPop, nMarkers, nQTL, parentSelected, progenySize, crossCost, phenoCost, genoCost,
+               rgaGeneration, rgaCost, lstCost, oytCost, pytCost, aytCost)
   names(args) <- c("nSim","initPop", "nMarkers", "nQTL", "parentSelected", "progenySize", "crossCost", "phenoCost",
-                   "genoCost")
+                   "genoCost", "rgaGeneration", "rgaCost", "lstCost", "oytCost", "pytCost", "aytCost")
   # optional QTL effects
   data[10,2] <- tolower(gsub(" ", "", data[10,2], fixed = T))
   if(tolower(data[10,2]) == "y") {
@@ -34,6 +48,5 @@ readParameters <- function(paramFile) {
     args <- c(args, list(qtlEffects))
     names(args) <- c(n, "qtlEffects")
   }
-
   return(args)
 }
