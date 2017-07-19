@@ -1,0 +1,11 @@
+number of simulation : 2
+initial population : 100
+number of markers : 100
+ratio of QTL : 0.2
+number of parents to select based on phenotype : 10
+progeny size (each time a progeny is generated) : 100
+cross cost : 38
+phenotyping cost : 40
+genotyping cost : 35
+set QTL effects ("y" or "n", case not sensitive, anything else is assumed to be "n") : y
+QTLs effects (no effect if the above option is set as anything else than "y") : 2.1;1.7;-1.8;-0.3
