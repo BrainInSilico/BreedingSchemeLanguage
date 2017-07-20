@@ -10,6 +10,7 @@
 #####################################################
 
 #******************** main **************************
+source("installBSL.R")
 # test if the package is installed, in case not, install it
 if(!isTRUE("BreedingSchemeLanguage" %in% .packages(all.available=TRUE))) {
   installBSL()
@@ -17,8 +18,8 @@ if(!isTRUE("BreedingSchemeLanguage" %in% .packages(all.available=TRUE))) {
 library(BreedingSchemeLanguage)
 library(miscTools)
 #** set some parameters **
-args = commandArgs(trailingOnly=TRUE)
-# args <- "bslParam.txt"
+# args = commandArgs(trailingOnly=TRUE)
+args <- "bslParam.txt"
 args <- readParameters(args)
 trainingPop <- 0
 currentPop <- 0
